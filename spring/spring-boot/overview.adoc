@@ -1,0 +1,165 @@
+= Spring Boot 中文参考文档
+:author: Zenny Xu
+:revnumber: 2.3.3.RELEASE
+:keywords: spring-boot
+:doctype: book
+
+****
+Phillip Webb, Dave Syer, Josh Long, Stéphane Nicoll, Rob Winch, AndyWilkinson, Marcel Overdijk, Christian Dupuis, Sébastien Deleuze, MichaelSimons, Vedran Pavić, Jay Bryant, Madhura Bhave, Eddú Meléndez, ScottFrederick
+****
+
+[abstract]
+== Spring Boot
+Spring Boot 能帮助你以最小偏差建立基于 Spring 的产品级应用和服务。它为 Spring 平台提供了一种牢固的手段，以便新用户和既有用户能够快速地获得所需的信息。
+
+你可以使用 Spring Boot 创建单独的 Java 应用程序并通过 `java -jar` 命令启动，或者，更传统一点的 War 包发布。我们同样提供了一个命令行工具来运行 spring 脚本。
+
+我们的主要目标是：
+
+- 为所有 Spring 开发提供快捷易用的入门体验
+- 开箱即用，即便需求开始偏离实际，也能迅速另辟蹊径
+- 提供一系列大型项目通用的非功能特性（例如嵌入式服务器、安全性、指标、健康检查、外部化配置）
+- 完全不需要代码生成，也不需要 XML 配置
+
+== 安装和入门
+
+https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/[参考文档] 已包含了详细的 https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/getting-started.html#getting-started-installing-spring-boot[安装说明] 以及全面的 https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/getting-started.html#getting-started-first-application[入门指南]。
+
+以下是一个用 Java 编写的 Spring Boot 应用程序的快速预览：
+
+[source,java]
+----
+import org.springframework.boot.*;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@SpringBootApplication
+public class Example {
+
+	@RequestMapping("/")
+	String home() {
+		return "Hello World!";
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(Example.class, args);
+	}
+
+}
+----
+
+== 寻求帮助
+
+碰到问题了？我们来帮你！
+
+- 查阅 https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/[参考文档] ，尤其是 https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/html/howto.html#howto[怎么做] 的——它们为据大多数的问题提供了解决方案。
+- 学习 Spring 的基础知识 —— Spring Boot 构建于许多其他 Spring 项目之上，可以从 https://spring.io/[spring.io] 网站上查阅到丰富的参考文献。如果你只是刚开始接触 Spring 的萌新，不妨尝试下这些 https://spring.io/guides[指南] 。
+- 如果你正在升级，请阅读 https://github.com/spring-projects/spring-boot/wiki[发行说明] 以了解升级说明和“新的和值得关注的”功能。
+- 提问 —— 我们跟踪着 https://stackoverflow.com/[stackoverflow.com] 上标有 https://stackoverflow.com/tags/spring-boot[spring-boot] 标签的问题。你也可以在 https://gitter.im/spring-projects/spring-boot[Gitter] 社区上参与讨论。
+- 在 https://github.com/spring-projects/spring-boot/issues[github.com/spring-projects/spring-boot/issues] 上报告关于 Spring 的错误。
+
+== 报告问题
+
+Spring Boot 使用 GitHub 的集成问题跟踪系统来记录错误（bugs）和特性请求（feature requests）。如果你想提出问题，请遵循以下建议：
+
+- 在记录错误之前，请搜索 https://github.com/spring-projects/spring-boot/issues[问题跟踪程序] 以确认是否有人已报告此问题。
+- 如果问题不存在， https://github.com/spring-projects/spring-boot/issues/new[创建一个新问题] 。
+- 请在问题报告中提供尽可能多的信息，我们想知道你使用的 Spring Boot 的版本，以及你的操作系统和 JVM 版本。
+- 如果需要粘贴代码，或包含堆栈跟踪，请在文本前后使用Markdown \``` 转义符。
+- 如果可能，尝试创建一个可复现问题的测试用例或项目，并将其附加到问题上。
+
+== 源代码构建
+
+Spring Boot 的二进制文件可以在 https://repo.spring.io[repo.spring.io] 上可以找到，因此你通常不需要亲自构建。但如果你想尝鲜，也可以使用 https://docs.gradle.org/current/userguide/gradle_wrapper.html[Gradle wrapper] 来构建 Spring Boot 并将其发布到你本地的 Maven 缓存中去。当然，你还需要 JDK1.8 。
+
+[source,groovy]
+----
+$ ./gradlew publishToMavenLocal
+----
+
+这将构建所有 jar 文件和文档，并将它们发布到本地 Maven 缓存中。它不会运行任何测试。如果要生成所有内容，请使用 `build` 任务：
+
+[source,groovy]
+----
+$ ./gradlew build
+----
+
+如果你希望提交 pull requests ，另请参见 https://github.com/spring-projects/spring-boot/blob/master/CONTRIBUTING.adoc[CONTRIBUTING.adoc] ，特别是在第一次更改之前请务必填写 https://support.springsource.com/spring_committer_signup[贡献者协议]，无论多么微不足道。
+
+== 模块
+
+Spring Boot 中有许多模块，以下是快速概述：
+
+=== spring-boot
+
+主库提供支持Spring Boot其他部分的功能，包括：
+
+- `SpringApplication` 类，提供了便利的静态方法，能用于编写独立的 Spring 应用程序。它的唯一任务是创建和刷新一个适当的 Spring `ApplicationContext` 。
+- 可选择容器（Tomcat、Jetty或Undertow）的嵌入式 web 应用程序。
+- 一流的外部化配置支持
+- 便利的 `ApplicationContext` 初始化器（initializers），包括对合理的日志记录默认值的支持。
+
+=== spring-boot-autoconfigure
+
+Spring Boot 可以根据类路径（classpath）的内容配置大部分通用应用程序。一个 `@EnableAutoConfiguration` 注释触发 Spring 上下文的自动配置。
+
+自动配置会尝试推断用户可能需要哪些 bean 。例如，如果`HSQLDB` 在类路径上，并且用户没有配置任何数据库连接，那么他们很可能希望定义一个内存数据库。当用户开始定义自己的 bean 时，其优先级总是高于自动配置。
+
+=== spring-boot-starters
+
+Starters 是一组依赖关系描述符，可以方便地引入应用程序中。你可以获得所需的所有Spring和相关技术的一站式服务，而不必搜索示例代码和复制粘贴大量依赖描述符。例如，如果你想开始使用 Spring 和 JPA 进行数据库访问，那么只需在你的项目中引入 `spring-boot-starter-data-jpa` 依赖项，就可以开始使用了。
+
+=== spring-boot-cli
+
+Spring 命令行应用程序编译并运行 Groovy 源代码，允许你编写极少的代码来运行应用程序。Spring CLI 还可以监视文件，在它们更改时自动重新编译和重新启动。
+
+=== spring-boot-actuator
+
+执行器终端（actuator endpoints）允许你监视应用程序并与之交互。Spring Boot Actuator 为执行器终端提供所需的基础设施。它包含对执行器终端的注解支持。开箱即用，这个模块提供了许多终端，包括 `HealthEndpoint` 、 `EnvironmentEndpoint` 、 `BeansEndpoint` 等等。
+
+=== spring-boot-actuator-autoconfigure
+
+此模块根据类路径的内容和一组属性（properties）为执行器终端提供自动配置功能。例如，如果 Micrometer 在类路径上，它将自动配置 `MetricsEndpoint` 。它包含通过 HTTP 或 JMX 暴露终端的配置。就像 Spring Boot AutoConfigure 一样，当用户开始定义自己的bean时，这一功能将退避。
+
+=== spring-boot-test
+
+此模块包含核心项和注解，它们在测试应用程序时将对你非常有用。
+
+=== spring-boot-test-autoconfigure
+
+与其他 Spring Boot 自动配置模块一样， spring-boot-test-autoconfigure 为基于类路径的测试提供自动配置。它包含许多注解，可用于自动配置应用程序中需要测试的部分。
+
+=== spring-boot-loader
+
+Spring Boot Loader 提供了一种秘密方法，允许你构建一个可以通过 `java-jar` 启动的 jar 文件。通常你不需要直接使用 `spring-boot-loader` ，而是通过 https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-tools/spring-boot-gradle-plugin[Gradle] 或 https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-tools/spring-boot-maven-plugin[Maven] 插件使用。
+
+=== spring-boot-devtools
+
+此模块提供了额外的开发时特性，如自动重启，以获得更流畅的应用程序开发体验。当运行完全打包的应用程序时，开发者工具将被自动禁用。
+
+== 样例
+
+在 https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-cli/samples[spring-boot-cli/samples] 目录下中提供了用于命令行应用程序的 Groovy 示例。要运行 CLI 样例，请在 samples 目录下输入 `spring run <sample>.groovy` 。
+
+== 指南
+
+在 https://spring.io/[spring.io] 网站上包含了多个指南，逐步演示如何循序渐进地使用 Spring Boot：
+
+- https://spring.io/guides/gs/spring-boot/[使用 Spring Boot 构建应用程序] 是一个非常基本的指南，它向你展示了如何创建应用程序、运行并添加一些管理服务。
+- https://spring.io/guides/gs/actuator-service/[使用 Spring Boot Actuator 构建 RESTFul 服务] 是创建 REST web 服务的指南，同时也展示了如何配置服务器。
+- https://spring.io/guides/gs/convert-jar-to-war/[将 Spring Boot JAR 应用程序转换为 WAR] 向你展示了如何在 web 服务器中以 WAR 文件的形式运行应用程序。
+
+== 许可
+
+Spring Boot 是在 https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license] 许可下发布的开源软件。
+
+
+[sidebar]
+.接下去
+--
+[.text-left]
+→ 目录
+[.text-left]
+→ 法律
+--
