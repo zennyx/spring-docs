@@ -1,0 +1,150 @@
+= Spring Boot 中文参考文档
+:author: Zenny Xu
+:revnumber: 2.3.3.RELEASE
+:keywords: spring-boot
+:doctype: book
+
+****
+Phillip Webb, Dave Syer, Josh Long, Stéphane Nicoll, Rob Winch, AndyWilkinson, Marcel Overdijk, Christian Dupuis, Sébastien Deleuze, MichaelSimons, Vedran Pavić, Jay Bryant, Madhura Bhave, Eddú Meléndez, ScottFrederick
+****
+
+== 目录
+
+== 法律
+
+{revnumber}
+
+Copyright © 2012-2020
+
+本文档的副本可供你自己使用，以及分发给他人，前提是你不得收取任何费用，并且每份副本都须包含本版权声明，无论是以印刷还是电子方式分发。
+
+== 1. Spring Boot 文档
+
+本节会对 Spring Boot 参考文档进行简要描述，以指引文档的其余部分。
+
+=== 1.1. 关于此文档
+
+Spring Boot 参考文档提供如下版本：
+
+- https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/[多页 HTML]
+- https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/htmlsingle/[单页 HTML]
+- https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/pdf/spring-boot-reference.pdf[PDF]
+
+最新版本的文档副本可以从 https://docs.spring.io/spring-boot/docs/current/reference/[docs.spring.io/spring-boot/docs/current/reference/] 处获取。
+
+本文档的副本可供你自己使用，以及分发给他人，前提是你不得收取任何费用，并且每份副本都须包含本版权声明，无论是以印刷还是电子方式分发。
+
+=== 1.2. 获取帮助
+
+如果你在使用 Spring Boot 是遇到困难，我们愿意提供帮助。
+
+- 尝试 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/howto.html#howto[“怎么做”的文档] 。它们为最常见的问题提供了解决方案。
+- 学习 Spring 基础。Spring Boot 构建于许多其他 Spring 项目之上。可以从 https://spring.io/[spring.io] 网站上查阅到丰富的参考文献。如果你只是刚开始接触 Spring 的萌新，不妨尝试下这些 https://spring.io/guides[指南] 。
+- 提问。我们跟踪着 https://stackoverflow.com/[stackoverflow.com] 上标有 https://stackoverflow.com/tags/spring-boot[`spring-boot`] 标签的问题。
+- 在 https://github.com/spring-projects/spring-boot/issues[github.com/spring-projects/spring-boot/issues] 上报告关于 Spring Boot 的错误。
+
+TIP:  Spring  Boot 全部都是开源的，包括文档。如果你发现文档有问题，或者你想改进它们，请 https://github.com/spring-projects/spring-boot/tree/v2.3.3.RELEASE[参与进来] 。
+
+=== 1.3. 第一步
+
+如果你正开始使用 Spring Boot， 或者大致上“ Spring ”，请从以下主题开始：
+
+- 从零开始： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-introducing-spring-boot[概述] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-system-requirements[要求] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-installing-spring-boot[安装]
+- 指导： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-first-application[上] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-first-application-code[下]
+- 实战： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-first-application-run[上] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-first-application-executable-jar[下]
+
+=== 1.4. 使用 Spring Boot
+
+准备好开始实际使用 Spring Boot 了吗？我们为你提供：
+
+- 构建系统： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-maven[Maven] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-gradle[Gradle] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-ant[Ant] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-starter[Starters]
+- 最佳实践： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-structuring-your-code[代码结构] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-configuration-classes[@Configuration] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-auto-configuration[@EnableAutoConfiguration] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-spring-beans-and-dependency-injection[Beans 和依赖注入]
+- 运行代码： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-running-from-an-ide[IDE] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-running-as-a-packaged-application[Packaged] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-running-with-the-maven-plugin[Maven] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-running-with-the-gradle-plugin[Gradle]
+- 打包应用： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-packaging-for-production[jars 产品]
+- Spring Boot CLI ： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-cli.html#cli[使用 CLI]
+
+=== 1.5. 了解 Spring Boot 的功能
+
+想要了解更多关于 Spring Boot 核心功能的细节吗？以下内容就是为你准备的：
+
+- 核心功能： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-spring-application[SpringApplication] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-external-config[外部配置] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-profiles[Profiles] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-logging[日志]
+- Web应用： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-spring-mvc[MVC] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-embedded-container[内嵌容器]
+- 数据处理： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-sql[SQL] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-nosql[NO-SQL]
+- 消息： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-messaging[概述] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-jms[JMS]
+- 测试： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-testing[概述] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-testing-spring-boot-applications[Boot Applications] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-test-utilities[工具]
+- 扩展： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-developing-auto-configuration[自动配置] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/spring-boot-features.html#boot-features-condition-annotations[@Conditions]
+
+=== 1.6. 转入生产
+
+当你准备将自己的 Spring Boot 应用投产时，你可能会对我们提供的 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/production-ready-features.html#production-ready[这些技巧] 感兴趣：
+
+- 管理终端： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/production-ready-features.html#production-ready-endpoints[概述]
+- 连接选项： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/production-ready-features.html#production-ready-monitoring[HTTP] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/production-ready-features.html#production-ready-jmx[JMX]
+- 监测： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/production-ready-features.html#production-ready-metrics[指标] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/production-ready-features.html#production-ready-auditing[审计] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/production-ready-features.html#production-ready-http-tracing[HTTP 追踪] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/production-ready-features.html#production-ready-process-monitoring[流程]
+
+=== 1.7. 高级主题
+
+最后，我们还为大佬们提供了几个主题：
+
+- Spring Boot 应用开发： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/deployment.html#cloud-deployment[云部署] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/deployment.html#deployment-service[操作系统服务]
+- 构建工具插件： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/build-tool-plugins.html#build-tool-plugins-maven-plugin[Maven] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/build-tool-plugins.html#build-tool-plugins-gradle-plugin[Gradle]
+- 附录： https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/appendix-application-properties.html#common-application-properties[应用程序属性] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/appendix-configuration-metadata.html#configuration-metadata[配置的元数据] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/appendix-auto-configuration-classes.html#auto-configuration-classes[自动配置类] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/appendix-test-auto-configuration.html#test-auto-configuration[测试自动配置注解] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/appendix-executable-jar-format.html#executable-jar[可执行 Jars] | https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/appendix-dependency-versions.html#dependency-versions[依赖版本]
+
+== 2. 入门
+
+如果你开始使用 Spring Boot ，或者大致上“ Spring ”，请从阅读本节开始。它回答了基本的“什么？”，“怎么？”，“为什么？”的问题。它包括对 Spring Boot 的介绍，以及安装说明。然后，我们将指导你构建第一个 Spring Boot 应用程序，并讨论一些核心原则。
+
+=== 2.1. 介绍 Spring Boot
+
+Spring Boot 帮助你创建独立运行的、生产级的、基于 Spring 的应用程序。我们对 Spring 平台及第三方库进行了整合，以便你就可以以最少的麻烦起步。大多数 Spring Boot 应用程序只需要极少的 Spring 配置。
+
+你可以使用 Spring Boot 来创建 Java 应用程序，并通过使用 `Java-jar` 命令 ，或者更传统的 war 部署来启动。我们还提供了一个命令行工具来运行 “spring 脚本”的。
+
+我们的主要目标是：
+
+- 为所有 Spring 开发提供快捷易用的入门体验。
+- 开箱即用，即便需求开始偏离实际，也能迅速另辟蹊径。
+- 提供一系列大型项目通用的非功能特性（例如嵌入式服务器、安全性、指标、健康检查、外部化配置）。
+- 无需生成代码，无需 XML 配置。
+
+=== 2.2. 系统要求
+
+Spring Boot {revnumber} 需要 https://www.java.com[Java 8] ，并能兼容至 Java 14（含）。除此以外，还需要 https://docs.spring.io/spring/docs/5.2.8.RELEASE/spring-framework-reference/[Spring Framework 5.2.8.RELEASE] 或更高版本的支持。
+
+显式的构建支持已经为以下构建工具提供：
+
+[cols=2*,options="header"]
+|===
+| 构建工具
+| 版本
+
+| Maven | 3.3+
+| Gradle | 6 （6.3 或更新）。 5.6.x 也受支持，但不推荐。
+|===
+
+==== 2.2.1. Servle 容器
+
+Spring Boot 支持以下内嵌 Servle 容器：
+
+[cols=2*,options="header"]
+|===
+| 名称
+| Servle 版本
+
+| Tomcat 9.0 | 4.0
+| Jetty 9.4 | 3.1
+| Undertow 2.0 | 4.0
+|===
+
+你也可以将 Spring Boot 应用部署到任何与Servlet 3.1+ 兼容的容器中。
+
+=== 2.3. 安装 Spring Boot
+
+Spring Boot 可以和“经典的” Java 开发工具一起使用，也可以安装后作为命令行工具使用。不管怎样，你都需要 https://www.java.com[Java SDK v1.8] 或更高版本。在开始之前，应使用以下命令检查当前安装的 Java ：
+
+[source,shell]
+----
+$ java -version
+----
+
+如果你是 Java 萌新，亦或想体验 Spring Boot ，那么推荐先尝试一下 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-installing-the-cli[Spring Boot CLI] （命令行界面）。否则，请继续阅读“经典”安装说明。

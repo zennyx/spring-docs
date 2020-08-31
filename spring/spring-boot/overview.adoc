@@ -2,11 +2,7 @@
 :author: Zenny Xu
 :revnumber: 2.3.3.RELEASE
 :keywords: spring-boot
-:doctype: book
-
-****
-Phillip Webb, Dave Syer, Josh Long, Stéphane Nicoll, Rob Winch, AndyWilkinson, Marcel Overdijk, Christian Dupuis, Sébastien Deleuze, MichaelSimons, Vedran Pavić, Jay Bryant, Madhura Bhave, Eddú Meléndez, ScottFrederick
-****
+:doctype: article
 
 [abstract]
 == Spring Boot
@@ -57,7 +53,7 @@ public class Example {
 - 学习 Spring 的基础知识 —— Spring Boot 构建于许多其他 Spring 项目之上，可以从 https://spring.io/[spring.io] 网站上查阅到丰富的参考文献。如果你只是刚开始接触 Spring 的萌新，不妨尝试下这些 https://spring.io/guides[指南] 。
 - 如果你正在升级，请阅读 https://github.com/spring-projects/spring-boot/wiki[发行说明] 以了解升级说明和“新的和值得关注的”功能。
 - 提问 —— 我们跟踪着 https://stackoverflow.com/[stackoverflow.com] 上标有 https://stackoverflow.com/tags/spring-boot[spring-boot] 标签的问题。你也可以在 https://gitter.im/spring-projects/spring-boot[Gitter] 社区上参与讨论。
-- 在 https://github.com/spring-projects/spring-boot/issues[github.com/spring-projects/spring-boot/issues] 上报告关于 Spring 的错误。
+- 在 https://github.com/spring-projects/spring-boot/issues[github.com/spring-projects/spring-boot/issues] 上报告关于 Spring Boot 的错误。
 
 == 报告问题
 
@@ -153,13 +149,3 @@ Spring Boot Loader 提供了一种秘密方法，允许你构建一个可以通�
 == 许可
 
 Spring Boot 是在 https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license] 许可下发布的开源软件。
-
-
-[sidebar]
-.接下去
---
-[.text-left]
-→ 目录
-[.text-left]
-→ 法律
---
