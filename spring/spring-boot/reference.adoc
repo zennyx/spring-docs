@@ -154,8 +154,8 @@ $ java -version
 
 你可以像任何标准 Java 库一样使用Spring Boot 。使用时，在类路径上引入适当的 `spring-boot-\*.jar` 文件即可。 Spring Boot 不需要任何特殊工具的集成，所以你可以使用任意 IDE 或文本编辑器 ^※1^ 。另外， Spring Boot 应用程序也没有任何特别之处，因此可以像运行其他 Java 程序一样运行和调试 Spring Boot 应用程序。
 
-.注 1：关于 IDE 和文本编辑器
-[quote, 译者]
+.译注 1：关于 IDE 和文本编辑器
+[quote]
 ____
 虽然使用文本编辑器也是可以的，但对于初学者，仍然强烈建议使用集成开发环境（IDE）来编写代码，不仅能享受到 IDE 提供的各种便利功能，也能避免一些容易被忽略的问题，例如编码格式、BOM 等。
 ____
@@ -166,10 +166,10 @@ ____
 
 Spring Boot 兼容 Apache Maven 3.3 或更高版本。如果你尚未安装 Maven ，可以按照 https://maven.apache.org[maven.apache.org] 上的说明进行安装。
 
-TIP: 在许多操作系统上，Maven 可以通过包管理器进行安装 ^※1^ 。如果你使用 OSX Homebrew，试试 `brew install maven` 命令。 Ubuntu 的用户可以执行 `sudo apt-get install maven` 。而使用 https://chocolatey.org/[Chocolatey] 的 Windows 用户可以通过提权的（管理员）命令提示符执行 `choco install maven` 。
+TIP: 在许多操作系统上，Maven 可以通过包管理器进行安装 ^※2^ 。如果你使用 OSX Homebrew，试试 `brew install maven` 命令。 Ubuntu 的用户可以执行 `sudo apt-get install maven` 。而使用 https://chocolatey.org/[Chocolatey] 的 Windows 用户可以通过提权的（管理员）命令提示符执行 `choco install maven` 。
 
-.注 1：关于版本
-[quote, 译者]
+.译注 2：关于 Maven 版本
+[quote]
 ____
 以上这些都是各系统通过包管理器（ homebrew / apt-get / chocolate ）安装 Maven 的命令。需要注意的是这些命令都没有注明安装的版本，通常默认的行为是安装最新版本。
 这对于个人学习没有问题，但对于工作环境来说，务必指定并统一安装的版本，以免出现在不同的主机上，Maven的工作方式因版本不同不一致的问题。或者，尝试使用 https://github.com/takari/maven-wrapper[Maven Wrapper]。
