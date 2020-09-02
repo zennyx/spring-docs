@@ -152,34 +152,37 @@ $ java -version
 
 ==== 2.3.1. Java 开发者向安装说明
 
-你可以像任何标准 Java 库一样使用Spring Boot 。使用时，在类路径上引入适当的 `spring-boot-\*.jar` 文件即可。 Spring Boot 不需要任何特殊工具的集成，所以你可以使用任意 IDE 或文本编辑器 ^※1^ 。另外， Spring Boot 应用程序也没有任何特别之处，因此可以像运行其他 Java 程序一样运行和调试 Spring Boot 应用程序。
+你可以像任何标准 Java 库一样使用Spring Boot 。使用时，在类路径上引入适当的 `spring-boot-\*.jar` 文件即可。 Spring Boot 不需要任何特殊工具的集成，所以你可以使用任意 IDE （集成开发环境）或文本编辑器 ^※^ 。另外， Spring Boot 应用程序也没有任何特别之处，因此可以像运行其他 Java 程序一样运行和调试 Spring Boot 应用程序。
 
-.译注 1：关于 IDE 和文本编辑器
+.※ 译注：关于 IDE 和文本编辑器
 [quote]
 ____
-虽然使用文本编辑器也是可以的，但对于初学者，仍然强烈建议使用集成开发环境（IDE）来编写代码，不仅能享受到 IDE 提供的各种便利功能，也能避免一些容易被忽略的问题，例如编码格式、BOM 等。
+虽然理论上使用文本编辑器是可行的，但对于开发者，特别是初学者而言，使用 IDE 任然是最佳选择，不仅能享受到 IDE 提供的各种便利功能，也能避免诸如乱码（编码格式设置不正确）或文件中含有 BOM 导致编译失败等意想不到的问题。
 ____
 
 尽管你 __可以__ 复制 Spring  Boot jar包，但是我们通常建议你使用支持依赖管理的构建工具（比如 Maven 或者 Gradle）。
 
-===== Maven 安装
+*Maven 安装*
 
 Spring Boot 兼容 Apache Maven 3.3 或更高版本。如果你尚未安装 Maven ，可以按照 https://maven.apache.org[maven.apache.org] 上的说明进行安装。
 
-TIP: 在许多操作系统上，Maven 可以通过包管理器进行安装 ^※2^ 。如果你使用 OSX Homebrew，试试 `brew install maven` 命令。 Ubuntu 的用户可以执行 `sudo apt-get install maven` 。而使用 https://chocolatey.org/[Chocolatey] 的 Windows 用户可以通过提权的（管理员）命令提示符执行 `choco install maven` 。
+TIP: 在许多操作系统上，Maven 可以通过包管理器进行安装 ^※^ 。如果你使用 OSX Homebrew，试试 `brew install maven` 命令。 Ubuntu 的用户可以执行 `sudo apt-get install maven` 。而使用 https://chocolatey.org/[Chocolatey] 的 Windows 用户可以通过提权的（管理员）命令提示符执行 `choco install maven` 。
 
-.译注 2：关于 Maven 版本
+.※ 译注：关于 Maven 版本
 [quote]
 ____
-以上这些都是各系统通过包管理器（ homebrew / apt-get / chocolate ）安装 Maven 的命令。需要注意的是这些命令都没有注明安装的版本，通常默认的行为是安装最新版本。
-这对于个人学习没有问题，但对于工作环境来说，务必指定并统一安装的版本，以免出现在不同的主机上，Maven的工作方式因版本不同不一致的问题。或者，尝试使用 https://github.com/takari/maven-wrapper[Maven Wrapper]。
+以上这些都是各系统通过包管理器（ homebrew / apt-get / chocolate ）安装 Maven 的命令。需要注意的是这些命令都没有注明安装的版本，通常来说，默认的行为都是安装最新的版本。
+
+这对于个人学习问题不大，但对于工作环境来说，请务必指定统一的安装版本，以免出现在不同的主机上，Maven的工作方式因版本不同不一致的问题。或者，请尝试使用 https://github.com/takari/maven-wrapper[Maven Wrapper]。
+
+最后，在使用各类包管理器进行安装操作时，请务必养成指定版本的良好习惯。
 ____
 
 Spring Boot 依赖项使用 `org.springframework.boot` 这个 `groupId`。通常情况下，你的 Maven POM 文件继承自 `spring-boot-starter-parent` 项目，并对一个或多个 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/using-spring-boot.html#using-boot-starter[“Starter”] 声明依赖。此外， Spring Boot 还提供了一个可选的 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/build-tool-plugins.html#build-tool-plugins-maven-plugin[Maven 插件] 用于创建可执行 jar。
 
 关于 Spring Boot 和 Maven 入门的更多细节可以在 Maven 插件参考指南的 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/maven-plugin/reference/html/#getting-started[入门部分] 找到。
 
-===== Gradle 安装
+*Gradle 安装*
 
 Spring Boot 与 Gradle 6（6.3或更高版本）兼容。 Gradle 5.6.x 也受支持，但此支持已废弃，并将在将来的版本中删除。如果你尚未安装 Gradle ，可以按照 https://gradle.org[gradle.org] 上的说明进行安装。
 
@@ -194,3 +197,86 @@ Gradle Wrapper 提供了一种在需要构建项目时“获取” Gradle 的好
 关于 Spring Boot 和 Gradle 入门的更多细节可以在 Gradle 插件参考指南的 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/gradle-plugin/reference/html/#getting-started[入门部分] 找到。
 
 ==== 2.3.2. 安装 Spring Boot CLI
+
+Spring Boot CLI （命令行界面）是一个命令行工具，你可以通过它配合 Spring 的使用来迅速构建项目的原型。它可以运行 Groovy 脚本，这意味着你可以使用一种熟悉的，类似 Java 的语法，而不是大量模板代码。
+
+CLI 对于 Spring Boot 开发来说不是必须的，但它绝对是让 Spring 应用程序落地的最快方法。
+
+*手动安装*
+
+你可以从 Spring 软件仓库下载 Spring CLI 的发行版：
+
+- https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/2.3.3.RELEASE/spring-boot-cli-2.3.3.RELEASE-bin.zip[spring-boot-cli-2.3.3.RELEASE-bin.zip]
+- https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/2.3.3.RELEASE/spring-boot-cli-2.3.3.RELEASE-bin.tar.gz[spring-boot-cli-2.3.3.RELEASE-bin.tar.gz]
+
+也可以使用最新的 https://repo.spring.io/snapshot/org/springframework/boot/spring-boot-cli/[快照发行版]。
+
+下载后，参照解压文件中 https://raw.githubusercontent.com/spring-projects/spring-boot/v2.3.3.RELEASE/spring-boot-project/spring-boot-cli/src/main/content/INSTALL.txt[INSTALL.txt] 的说明操作即可。总的来说，在 `.zip`文件的 `bin/` 目录下有一个 `spring` 脚本（ Windows 版是 `spring.bat` ）可供使用。或者，你也可以直接使用 `java-jar` 运行 `.jar` 文件（脚本会帮助你确保类路径设置正确）。
+
+*通过 SDKMAN! 安装*
+
+SDKMAN! （软件开发工具包管理器）可用于管理各种二进制 SDK （软件开发工具包）的多个版本，也包括 Groovy 和 Spring Boot CLI 。请从 https://sdkman.io[sdkman.io] 获取 SDKMAN!，然后执行以下命令安装 Spring Boot ：
+
+[source,shell]
+----
+$ sdk install springboot
+$ spring --version
+Spring Boot v2.3.3.RELEASE
+----
+
+如果你为 CLI 开发功能并希望访问你构建的版本，请使用以下命令：
+
+[source,shell]
+----
+$ sdk install springboot dev /path/to/spring-boot/spring-boot-cli/target/spring-boot-cli-2.3.3.RELEASE-bin/spring-2.3.3.RELEASE/
+$ sdk default springboot dev
+$ spring --version
+Spring CLI v2.3.3.RELEASE
+----
+
+前面的例子安装了一个 `spring` 的本地实例，名为 `dev`。它指向你的目标构建位置，所以每次重新构建Spring Boot 时，`spring` 都是最新的。
+
+你可以运行一下命令来查看：
+
+[source,shell]
+----
+$ sdk ls springboot
+
+================================================================================
+Available Springboot Versions
+================================================================================
+> + dev
+* 2.3.3.RELEASE
+
+================================================================================
++ - local version
+* - installed
+> - currently in use
+================================================================================
+----
+
+*通过 OSX Homebrew 安装*
+
+如果你在 Mac 上使用 https://brew.sh[Homebrew]，你可以使用以下命令安装 Spring Boot CLI：
+
+[source,shell]
+----
+$ brew tap pivotal/tap
+$ brew install springboot
+----
+
+Homebrew 会将 `spring` 安装在 `/usr/local/bin` 。
+
+NOTE: 如果看不到公式，那么你安装的 brew 很可能已过期。在这种情况下，请运行 `brew update` 更新 brew  后重试。
+
+*通过 MacPorts 安装*
+
+如果你在 Mac 上使用 https://www.macports.org[MacPorts] ，你可以使用以下命令安装 Spring Boot CLI：
+
+[source,shell]
+----
+$ sudo port install spring-boot-cli
+----
+
+*命令行编译*
+
