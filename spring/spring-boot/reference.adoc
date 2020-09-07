@@ -202,7 +202,7 @@ Spring Boot CLI （命令行界面）是一个命令行工具，你可以通过�
 
 CLI 对于 Spring Boot 开发来说不是必须的，但它绝对是让 Spring 应用程序落地的最快方法。
 
-*手动安装*
+===== 手动安装
 
 你可以从 Spring 软件仓库下载 Spring CLI 的发行版：
 
@@ -213,7 +213,7 @@ CLI 对于 Spring Boot 开发来说不是必须的，但它绝对是让 Spring �
 
 下载后，参照解压文件中 https://raw.githubusercontent.com/spring-projects/spring-boot/v2.3.3.RELEASE/spring-boot-project/spring-boot-cli/src/main/content/INSTALL.txt[INSTALL.txt] 的说明操作即可。总的来说，在 `.zip`文件的 `bin/` 目录下有一个 `spring` 脚本（ Windows 版是 `spring.bat` ）可供使用。或者，你也可以直接使用 `java-jar` 运行 `.jar` 文件（脚本会帮助你确保类路径设置正确）。
 
-*通过 SDKMAN! 安装*
+===== 通过 SDKMAN! 安装
 
 SDKMAN! （软件开发工具包管理器）可用于管理各种二进制 SDK （软件开发工具包）的多个版本，也包括 Groovy 和 Spring Boot CLI 。请从 https://sdkman.io[sdkman.io] 获取 SDKMAN!，然后执行以下命令安装 Spring Boot ：
 
@@ -255,7 +255,7 @@ Available Springboot Versions
 ================================================================================
 ----
 
-*通过 OSX Homebrew 安装*
+===== 通过 OSX Homebrew 安装
 
 如果你在 Mac 上使用 https://brew.sh[Homebrew]，你可以使用以下命令安装 Spring Boot CLI：
 
@@ -267,9 +267,9 @@ $ brew install springboot
 
 Homebrew 会将 `spring` 安装在 `/usr/local/bin` 。
 
-NOTE: 如果看不到公式，那么你安装的 brew 很可能已过期。在这种情况下，请运行 `brew update` 更新 brew  后重试。
+NOTE: 如果看不到公式，那么你安装的 brew 很可能已过时。遇到这种情况时，请运行 `brew update` 更新 brew 后重试。
 
-*通过 MacPorts 安装*
+===== 通过 MacPorts 安装
 
 如果你在 Mac 上使用 https://www.macports.org[MacPorts] ，你可以使用以下命令安装 Spring Boot CLI：
 
@@ -278,5 +278,86 @@ NOTE: 如果看不到公式，那么你安装的 brew 很可能已过期。在�
 $ sudo port install spring-boot-cli
 ----
 
-*命令行编译*
+===== 命令行补齐
+
+Spring Boot CLI 包含了为 https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29[BASH] 和 https://en.wikipedia.org/wiki/Z_shell[zsh] shell 提供命令补齐的脚本。你可以从在任何 shell 中 `获取` 此脚本（同样以 `spring` 命名），或者将其放入你个人或系统级的 bash 补全初始化中。在Debian系统上，系统级脚本位于 `/shell-completion/bash` 中，并且当新的 shell 启动时，此目录下的所有脚本都会执行。举个栗子，如果你已通过 SDKMAN! 完成安装，则可以使用以下命令手动运行脚本：
+
+[source,shell]
+----
+$ . ~/.sdkman/candidates/springboot/current/shell-completion/bash/spring
+$ spring <HIT TAB HERE>
+  grab  help  jar  run  test  version
+----
+
+NOTE: 如果使用  Homebrew 或 MacPorts 安装 Spring Boot CLI，命令行补全脚本会自动注册到 shell 中。
+
+===== Windows Scoop 安装
+
+如果你在 Windows 上使用 https://scoop.sh[Scoop] ，则可以使用以下命令安装 Spring Boot CLI：
+
+[source,shell]
+----
+> scoop bucket add extras
+> scoop install springboot
+----
+
+Scoop 会将 `spring` 安装到 `~/scoop/apps/springboot/current/bin` 。
+
+NOTE: 如果看不到应用程序清单，那么你安装的 scoop 很可能已过时。遇到这种情况时，请运行 `scoop update` 更新 scoop 后重试。
+
+===== Spring CLI 示例快速入门
+
+可以使用以下 web 应用程序测试安装是否成功。首先，创建一个名为 `app.groovy` 的文件，如下所示：
+
+[source,groovy]
+----
+@RestController
+class ThisWillActuallyRun {
+
+    @RequestMapping("/")
+    String home() {
+        "Hello World!"
+    }
+
+}
+----
+
+然后在 shell 上运行它，如下所示：
+
+[source,shell]
+----
+$ spring run app.groovy
+----
+
+NOTE: 因为需要下载依赖项，所以应用程序第一次运行时会很慢。之后的运行速度会快得多。
+
+使用浏览器打开链接 http://localhost:8080[localhost:8080] ，将看到以下输出：
+
+[source]
+----
+Hello World!
+----
+
+==== 2.3.3. 从早期版本的 Spring Boot 升级
+
+如果你要从 `1.x` 版本的 Spring Boot 升级，请查阅 https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Migration-Guide[项目 wiki 上的“迁移指南”] ，那里提供了详细的升级说明。另外查阅 https://github.com/spring-projects/spring-boot/wiki[“发行说明”] 可获得每个发行版的“新的和值得注意的”特性的列表。
+
+升级到一个新功能版本时，某些属性可能会被重命名或者删除。 Spring Boot 提供了一种功能，可在启动时分析应用程序环境、打印诊断，并临时迁移属性。要启用此功能，请将以下依赖项添加至项目中：
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-properties-migrator</artifactId>
+    <scope>runtime</scope>
+</dependency>
+----
+
+WARNING: 那些延迟添加到环境中的属性，例如使用@PropertySource时添加的属性，将不会被考虑。
+
+NOTE: 一旦完成迁移，请务必从项目的依赖项中删除此模块。
+
+要升级现有的 CLI 安装，请使用相应的包管理器命令（例如， `brew upgrade` ）。如果 CLI 是手动安装的，请按照 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-manual-cli-installation[标准说明] 进行升级，记住更新 `PATH` 环境变量以移除任何旧有的引用。
+
+=== 2.4. 开发你的第一个 Spring Boot 应用
 
