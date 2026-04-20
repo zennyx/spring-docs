@@ -360,4 +360,3 @@ NOTE: 一旦完成迁移，请务必从项目的依赖项中删除此模块。
 要升级现有的 CLI 安装，请使用相应的包管理器命令（例如， `brew upgrade` ）。如果 CLI 是手动安装的，请按照 https://docs.spring.io/spring-boot/docs/2.3.3.RELEASE/reference/html/getting-started.html#getting-started-manual-cli-installation[标准说明] 进行升级，记住更新 `PATH` 环境变量以移除任何旧有的引用。
 
 === 2.4. 开发你的第一个 Spring Boot 应用
-
